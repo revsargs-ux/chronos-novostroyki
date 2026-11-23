@@ -84,6 +84,16 @@ section{padding:64px 0}
 .dev span{font-size:11.5px;color:var(--muted);line-height:1.35;display:block;margin-top:2px}
 .dev .pr{position:absolute;display:none}
 
+/* areas */
+.area-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.area{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;transition:.2s;cursor:pointer}
+.area:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 26px rgba(10,25,47,.06)}
+.area .a-mono{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--gold);display:grid;
+  place-items:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;margin-bottom:12px}
+.area b{font-size:15px;font-weight:600}
+.area span{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.area .cnt{margin-top:10px;font-size:12px;color:var(--gold-d);font-weight:600}
+
 /* projects */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
 .filters .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
@@ -126,6 +136,13 @@ section{padding:64px 0}
 .step .n{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold);line-height:1}
 .step h3{font-size:17px;margin:9px 0 8px}
 .step p{font-size:13px;color:var(--muted)}
+
+/* unlocked band */
+.unlocked{background:linear-gradient(135deg,#0A192F,#17324F);border-radius:22px;padding:40px;color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.unlocked h2{font-size:clamp(22px,3vw,34px);line-height:1.1;margin:8px 0 12px}
+.unlocked p{color:#A9B8CB;font-size:14px;max-width:640px}
+.unlocked .btn{white-space:nowrap}
 
 /* check */
 .check{background:var(--ink);color:#fff;border-radius:22px;padding:44px}
@@ -201,7 +218,7 @@ footer a:hover{color:var(--gold-d)}
 <div class="wrap hero">
   <div class="kicker">TOON EXPO · Ереван · 13–15 ноября 2026</div>
   <h1>Новостройки Еревана<br>по <em>ценам застройщика</em></h1>
-  <p>Собрали 100+ предложений с крупнейшей выставки недвижимости Армении: цены без наценки, условия рассрочки, ипотека и проверка застройщика до внесения аванса.</p>
+  <p>Сравните проекты и цены от 15+ застройщиков с выставки TOON EXPO — 12 проектов и 30 000+ квартир в одном месте. Без наценки к цене застройщика.</p>
 
   <div class="search">
     <div class="field">
@@ -253,6 +270,17 @@ footer a:hover{color:var(--gold-d)}
   </div>
 </section>
 
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Районы и направления</h2>
+        <p>Где выгоднее смотреть сейчас и в каком порядке — по данным буклетов и кадастровых цен.</p></div>
+      <div class="counter" id="areacount"></div>
+    </div>
+    <div class="area-grid" id="areagrid"></div>
+  </div>
+</section>
+
 <section id="projects" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
@@ -264,6 +292,19 @@ footer a:hover{color:var(--gold-d)}
     </div>
     <div class="filters" id="filters"></div>
     <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section id="concierge" style="padding-top:0">
+  <div class="wrap">
+    <div class="unlocked">
+      <div>
+        <div class="kicker" style="color:var(--gold)">CHRONOS Concierge</div>
+        <h2>Проверка и сопровождение — уже включены</h2>
+        <p>Застройщика проверяем до аванса, сделку ведёт один агент с юристом, а для покупателей из-за рубежа — видеопоказ и дистанционное оформление. Вы не остаётесь один на один с офисом продаж.</p>
+      </div>
+      <a class="btn btn-gold" href="https://wa.me/37498712268" target="_blank" rel="noopener">Начать с проверки</a>
+    </div>
   </div>
 </section>
 
@@ -416,6 +457,28 @@ DEVS.forEach(d => {
   el.className = 'dev';
   el.innerHTML = `<div class="mono">${d.m}</div><div><b>${d.n}</b><span>${d.d}</span></div>`;
   dg.appendChild(el);
+});
+
+// ——— районы
+const AREAS = [
+ {n:'Кентрон', m:'KE', d:'Центр: Firdus Prime, Millennium Park', cnt:'2 проекта · до $6 600/м²'},
+ {n:'Арабкир', m:'AR', d:'ArmConstruct, возврат подоходного налога', cnt:'3 проекта'},
+ {n:'Аван', m:'AV', d:'Avan Towers — 580–640 тыс. AMD/м²', cnt:'1 проект · до 5010 кв.'},
+ {n:'Малатия-Себастия', m:'MS', d:'Nor Yerevan — от 515 тыс. AMD/м²', cnt:'1 проект · 24 здания'},
+ {n:'Канакер', m:'KA', d:'Kaskan Gilik 26 — 1247 квартир', cnt:'1 проект · сдача 2027'},
+ {n:'Аджапняк', m:'AJ', d:'Da Vinci Clubhouse — клубный дом', cnt:'1 проект · 40/60'},
+ {n:'Цицернакаберд', m:'CI', d:'Millennium Park — парк, 2400 квартир', cnt:'1 проект · 6,43 га'},
+ {n:'Нор-Норк', m:'NN', d:'Гюрджян Каскад (Artcompany)', cnt:'1 проект'},
+ {n:'Батуми', m:'BA', d:'Ambassadori Island — 58 этажей у моря', cnt:'1 проект · от $4 040/м²'},
+ {n:'Costa del Sol', m:'CS', d:'Casa del Mar — виллы, Испания', cnt:'1 проект · от €120 000'}
+];
+const ag = document.getElementById('areagrid');
+document.getElementById('areacount').textContent = AREAS.length + ' направлений';
+AREAS.forEach(a => {
+  const el = document.createElement('div');
+  el.className = 'area';
+  el.innerHTML = `<div class="a-mono">${a.m}</div><b>${a.n}</b><span>${a.d}</span><div class="cnt">${a.cnt}</div>`;
+  ag.appendChild(el);
 });
 
 // ——— проекты
