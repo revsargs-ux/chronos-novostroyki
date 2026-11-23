@@ -102,6 +102,8 @@ section{padding:64px 0}
   linear-gradient(0deg,rgba(255,255,255,.10),transparent 60%)}
 .visual .tag{position:relative;z-index:2;background:rgba(10,25,47,.55);border:1px solid rgba(255,255,255,.28);
   border-radius:999px;padding:5px 11px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.visual .mono-big{position:absolute;right:16px;bottom:-6px;font-family:'Cormorant Garamond',serif;font-size:74px;
+  font-weight:700;color:rgba(255,255,255,.13);z-index:1;letter-spacing:-.02em}
 .visual .dev-name{position:absolute;right:14px;top:14px;z-index:2;font-size:10.5px;letter-spacing:.1em;
   text-transform:uppercase;opacity:.85}
 .pbody{padding:17px 17px 0;flex:1;display:flex;flex-direction:column}
@@ -292,12 +294,12 @@ footer a:hover{color:var(--gold-d)}
     <table class="tbl">
       <thead><tr><th>Проект</th><th>Локация</th><th>Цена метра</th><th>Сдача</th></tr></thead>
       <tbody>
-        <tr><td>Firdus Prime Residence</td><td>Кентрон, Фирдуси 2</td><td>медиана ≈ 2 443 000 ֏ (≈ $6 600)</td><td>2027–2029</td></tr>
-        <tr><td>Millennium Park</td><td>Цицернакаберд</td><td>от 750 000 ֏</td><td>по корпусам</td></tr>
-        <tr><td>Tichina 5</td><td>Тичина, 3-й пер.</td><td>от 678 500 ֏</td><td>по корпусам</td></tr>
-        <tr><td>Avan Towers</td><td>Ачарян 53</td><td>580 000 – 640 000 ֏</td><td>2027–2030</td></tr>
-        <tr><td>Nor Yerevan</td><td>Малатия-Себастия</td><td>от 515 000 ֏</td><td>2029</td></tr>
-        <tr><td>Green Way Residence</td><td>Ереван</td><td>420 000 ֏</td><td>по корпусам</td></tr>
+        <tr><td>Firdus Prime Residence</td><td>Кентрон, Фирдуси 2</td><td>медиана ≈ 2 443 000 AMD (≈ $6 600)</td><td>2027–2029</td></tr>
+        <tr><td>Millennium Park</td><td>Цицернакаберд</td><td>от 750 000 AMD</td><td>по корпусам</td></tr>
+        <tr><td>Tichina 5</td><td>Тичина, 3-й пер.</td><td>от 678 500 AMD</td><td>по корпусам</td></tr>
+        <tr><td>Avan Towers</td><td>Ачарян 53</td><td>580 000 – 640 000 AMD</td><td>2027–2030</td></tr>
+        <tr><td>Nor Yerevan</td><td>Малатия-Себастия</td><td>от 515 000 AMD</td><td>2029</td></tr>
+        <tr><td>Green Way Residence</td><td>Ереван</td><td>420 000 AMD</td><td>по корпусам</td></tr>
       </tbody>
     </table>
     <p class="note">Курс и цены указаны по данным буклетов на 13–15.11.2026. Перед сделкой всегда сверяем актуальный прайс застройщика.</p>
@@ -369,19 +371,19 @@ const DEVS = [
 
 const P = [
  {n:'Firdus Prime Residence', dev:'Artcompany', city:'Ереван', area:'Кентрон, Фирдуси 2', rooms:'1–5', size:'28,9–498,2 м²',
-  price:'от 100 052 000 ֏', usd:277660, m2:'медиана 2 443 000 ֏/м²', due:'2027–2029',
+  price:'от 100 052 000 AMD', usd:277660, m2:'медиана 2 443 000 AMD/м²', due:'2027–2029',
   tags:['рассрочка','ипотека'], plan:'42–52 мес без %, взнос от 10%', bank:'Америабанк', v:'alt4'},
  {n:'Nor Yerevan', dev:'ML Mining', city:'Ереван', area:'Малатия-Себастия, А. Бабаджаняна 42/5', rooms:'1–4', size:'24 здания',
-  price:'от 515 000 ֏/м²', usd:61000, m2:'от 515 000 ֏/м²', due:'2029',
+  price:'от 515 000 AMD/м²', usd:61000, m2:'от 515 000 AMD/м²', due:'2029',
   tags:['ипотека'], plan:'2500+ квартир продано', bank:'Ardshinbank 11,7%', v:''},
  {n:'Avan Towers', dev:'ML Mining', city:'Ереван', area:'Ачарян 53, корпуса A–H', rooms:'1–5', size:'35–541 м²',
-  price:'580–640 тыс. ֏/м²', usd:69000, m2:'580 000–640 000 ֏/м²', due:'2027–2030',
+  price:'580–640 тыс. AMD/м²', usd:69000, m2:'580 000–640 000 AMD/м²', due:'2027–2030',
   tags:['ипотека','рассрочка'], plan:'до 5010 квартир в проекте', bank:'банки-партнёры', v:'alt1'},
  {n:'Millennium Park', dev:'Founder Global', city:'Ереван', area:'Цицернакаберд, Кентрон', rooms:'1–4', size:'6,43 га, ~2400 кв.',
-  price:'от 750 000 ֏/м²', usd:89000, m2:'от 750 000 ֏/м²', due:'по корпусам',
+  price:'от 750 000 AMD/м²', usd:89000, m2:'от 750 000 AMD/м²', due:'по корпусам',
   tags:['рассрочка'], plan:'центральный парк, ~16 корпусов', bank:'—', v:'alt3'},
  {n:'Tichina 5', dev:'Founder Global', city:'Ереван', area:'ул. Тичина, 3-й пер., 4/1', rooms:'1–4', size:'—',
-  price:'от 678 500 ֏/м²', usd:80000, m2:'от 678 500 ֏/м²', due:'по корпусам',
+  price:'от 678 500 AMD/м²', usd:80000, m2:'от 678 500 AMD/м²', due:'по корпусам',
   tags:['рассрочка'], plan:'комплекс для семейной жизни', bank:'—', v:'alt2'},
  {n:'Da Vinci Clubhouse', dev:'Founder Global', city:'Ереван', area:'Аджапняк, Хндкастани 2', rooms:'клубный дом', size:'—',
   price:'по запросу', usd:100000, m2:'клубный формат', due:'декабрь 2029',
@@ -445,6 +447,7 @@ function render(){
     el.innerHTML = `
       <div class="visual ${p.v}">
         <div class="dev-name">${p.dev}</div>
+        <div class="mono-big">${p.dev.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}</div>
         <div class="tag">${p.city}${p.tags.includes('налог') ? ' · возврат налога' : ''}</div>
       </div>
       <div class="pbody">
